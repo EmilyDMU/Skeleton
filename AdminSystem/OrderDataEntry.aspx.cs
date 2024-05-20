@@ -21,4 +21,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void TextBox1_TextChanged2(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void TxtCustomerId_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtStaffId_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
