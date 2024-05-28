@@ -118,20 +118,35 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int staffId)
+        public bool Find(int StaffId)
         {
 
-            //set the private data members to the test data value
-            mStaffId = 2;
-            mStaffName = "Will Smith";
-            mDateOfBirth = Convert.ToDateTime("08/08/1999");
-            mStaffRole = "Store Manager";
-            mStaffDepartment = "Sales";
-            mStaffStatus = "Active";
-            mStaffPermission = true;
-
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add parameter for staff id to search for 
+            DB.AddParameter("@StaffId", StaffId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            //if one record is found (there should either be 1 or 0)
+            if (DB.Count == 1)
+            {
+                //copy data from dbto the private data members
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mStaffName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
+                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
+                mStaffRole = Convert.ToString(DB.DataTable.Rows[0]["StaffRole"]);
+                mStaffDepartment = Convert.ToString(DB.DataTable.Rows[0]["StaffDepartment"]);
+                mStaffStatus = Convert.ToString(DB.DataTable.Rows[0]["StaffStatus"]);
+                mStaffPermission = Convert.ToBoolean(DB.DataTable.Rows[0]["StaffPermission"]);
+                //return everything that worked okay
+                return true;
+            }
+            //if no record found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
 
     }
