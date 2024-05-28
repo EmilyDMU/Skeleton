@@ -116,7 +116,7 @@ namespace Testing2
             //create a boolean variable to store the results of validation
             Boolean Found = false;
             //create some data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //test to see that the two values are the same
@@ -133,11 +133,11 @@ namespace Testing2
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the staff id
-            if (AStaff.StaffId != 2)
+            if (AStaff.StaffId != 6)
             {
                 OK = false;
             }
@@ -155,7 +155,7 @@ namespace Testing2
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the date of birth property
@@ -177,11 +177,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the staff name property
-            if (AStaff.StaffName != "Will Smith")
+            if (AStaff.StaffName != "Sam Rodgers")
             {
                 OK = false;
             }
@@ -199,11 +199,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the role property
-            if (AStaff.StaffRole != "Store Manager")
+            if (AStaff.StaffRole != "Team Leader")
             {
                 OK = false;
             }
@@ -221,11 +221,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the department property
-            if (AStaff.StaffDepartment != "Sales")
+            if (AStaff.StaffDepartment != "Retail Operations")
             {
                 OK = false;
             }
@@ -243,11 +243,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the status property
-            if (AStaff.StaffStatus != "Active")
+            if (AStaff.StaffStatus != "active")
             {
                 OK = false;
             }
@@ -265,7 +265,7 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 6;
             //invoke the method
             Found = AStaff.Find(StaffId);
             //check the permission property
