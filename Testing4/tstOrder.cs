@@ -62,7 +62,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
 
             //create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
+            DateTime TestData = DateTime.Date;
 
             //assign the data to the property
             AnOrder.OrderDate = TestData;

@@ -23,11 +23,11 @@ namespace Testing2
             //create instance of class we want to create
             clsStaff AStaff = new clsStaff();
             //create test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
+            Date TestData = DateTime.Date;
             //assign data to the property
-            AStaff .DateAdded = TestData;
+            AStaff .DateOfBirth = TestData;
             //test to see the two values are the same
-            Assert.AreEqual(AStaff.DateAdded, TestData);
+            Assert.AreEqual(AStaff.DateOfBirth, TestData);
         }
 
         [TestMethod]
