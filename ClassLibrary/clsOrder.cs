@@ -12,5 +12,6 @@ namespace ClassLibrary
         public int OrderId { get; set; }
         public int ShoeId { get; set; }
         public string Note { get; set; }
+        public bool Active { get; set; }
     }
 }
