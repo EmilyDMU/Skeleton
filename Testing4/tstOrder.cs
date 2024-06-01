@@ -25,16 +25,16 @@ namespace Testing4
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
 
-        //create some test data to assign to the property
-        Boolean TestData = true;
+            //create some test data to assign to the property
+            Boolean TestData = true;
 
-        //assign the data to the property
-        AnOrder.OrderStatus = TestData;
+            //assign the data to the property
+            AnOrder.OrderStatus = TestData;
 
-         //test to see that the two values are the same
-         Assert.AreEqual(AnOrder.OrderStatus, TestData);
-            
-            
+            //test to see that the two values are the same
+            Assert.AreEqual(AnOrder.OrderStatus, TestData);
+
+
         }
 
         [TestMethod]
@@ -182,22 +182,34 @@ namespace Testing4
         }
 
 
+        [TestMethod]
+        public void FindMethodOk()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+
+            //invoke the method
+            Found = AnOrder.Find(OrderId);
+
+            //test to see that the two values are the same
+            Assert.IsTrue(Found);
+        }
 
 
 
 
 
-
-
-
-
-
-
-    }
+        }
 }
 
-        
-     
+
+
 
 
 
