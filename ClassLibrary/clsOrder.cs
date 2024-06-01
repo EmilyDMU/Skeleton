@@ -13,5 +13,11 @@ namespace ClassLibrary
         public int ShoeId { get; set; }
         public string Note { get; set; }
         public bool Active { get; set; }
+
+        public bool Find(int orderId)
+        {
+            //alaways return true
+            return true;
+        }
     }
 }
