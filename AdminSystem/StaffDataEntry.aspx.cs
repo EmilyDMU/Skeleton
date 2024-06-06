@@ -14,27 +14,51 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
-    {
-        //create a new instance of clsStaff
+    { //create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
         //capture staff ID
-        AStaff.StaffId = Convert.ToInt32(txtStaffId.Text);
+        string StaffId = txtStaffId.Text;
         //capture the staff name
-        AStaff.StaffName = txtStaffName.Text;
+        string StaffName = txtStaffName.Text;
         //capture date of birth 
-        AStaff.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+        string DateOfBirth = txtDateOfBirth.Text;
         //capture role
-        AStaff.StaffRole = txtStaffRole.Text;
+        string StaffRole = txtStaffRole.Text;
         //capture department
-        AStaff.StaffDepartment = txtStaffDepartment.Text;
+        string StaffDepartment = txtStaffDepartment.Text;
         //capture status
-        AStaff.StaffStatus = txtStaffStatus.Text;
+        string StaffStatus = txtStaffStatus.Text;
         //capture permission checkbox
-        AStaff.StaffPermission = chkStaffPermission.Checked;
-        //store the staff in the session objetc
-        Session["AStaff"] = AStaff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        string StaffPermission = chkStaffPermission.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the date
+        Error = AStaff.Valid(StaffId, StaffName, DateOfBirth, StaffDepartment, StaffStatus);
+        if (Error == "")
+        {
+            //capture staff id 
+            AStaff.StaffId = Convert.ToInt32(StaffId);
+            //capture staff name
+            AStaff.StaffName = StaffName;
+            //capture  date of birth 
+            AStaff.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            //capture staff role
+            AStaff.StaffRole = StaffRole;
+            //capture staff department
+            AStaff.StaffDepartment = StaffDepartment;
+            //capture staff status
+            AStaff.StaffStatus = StaffStatus;
+            //store address in session object
+            Session["AStaff"] = AStaff;
+            //navigate to view page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
