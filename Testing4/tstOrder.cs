@@ -181,7 +181,6 @@ namespace Testing4
 
         }
 
-
         [TestMethod]
         public void FindMethodOk()
         {
@@ -192,7 +191,7 @@ namespace Testing4
             Boolean Found = false;
 
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
@@ -200,6 +199,7 @@ namespace Testing4
             //test to see that the two values are the same
             Assert.IsTrue(Found);
         }
+
 
         [TestMethod]
         public void TestOrderIdFound()
@@ -214,19 +214,20 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
 
             //check the Order id 
-            if (AnOrder.OrderId != 1)
+            if (AnOrder.OrderId != 3)
             {
                 OK = false;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+
 
         [TestMethod]
         public void TestOrderDateFound()
@@ -241,21 +242,20 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
 
             //check the order date property 
-            if (AnOrder.OrderDate != Convert.ToDateTime("23/12/2022"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("07/04/2024"))
             {
                 OK = false;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
-
-
         }
+
         [TestMethod]
         public void TestNoteFound()
         {
@@ -269,19 +269,20 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
 
             //check the note property
-            if (AnOrder.Note != "ITEM:COLOUR/SIZE")
+            if (AnOrder.Note != "ITEM: BLACK/M")
             {
                 OK = false;
             }
             //test to see the result is correct
             Assert.IsTrue(OK);
         }
+
         [TestMethod]
         public void TestCustomerIdFound()
         {
@@ -295,13 +296,13 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 CustomerId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
-            Found = AnOrder.Find(CustomerId);
+            Found = AnOrder.Find(OrderId);
 
             //check the customer id property
-            if (AnOrder.CustomerId != 11)
+            if (AnOrder.CustomerId != 5)
             {
                 OK = false;
             }
@@ -321,18 +322,19 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 ShoeId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
-            Found = AnOrder.Find(ShoeId);
+            Found = AnOrder.Find(OrderId);
 
             //check the shoe id property
-            if (AnOrder.ShoeId != 12)
+            if (AnOrder.ShoeId != 5)
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
+
 
         [TestMethod]
         public void TestStaffIdFound()
@@ -347,20 +349,18 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StaffId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
-            Found = AnOrder.Find(StaffId);
+            Found = AnOrder.Find(OrderId);
 
             //check the staff id property
-            if (AnOrder.StaffId != 13)
+            if (AnOrder.StaffId != 1)
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
-
-
 
         [TestMethod]
         public void TestOrderStatusFound()
@@ -375,7 +375,7 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
@@ -388,7 +388,6 @@ namespace Testing4
             //test to see the result is correct
             Assert.IsTrue(OK);
         }
-
 
         [TestMethod]
         public void TestActiveFound()
@@ -403,7 +402,7 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
@@ -431,13 +430,13 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 1;
+            Int32 OrderId = 3;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
 
             //check the total Amount property
-            if (AnOrder.TotalAmount != 45.50)
+            if (AnOrder.TotalAmount != 215)
             {
                 OK = false;
             }
@@ -448,17 +447,17 @@ namespace Testing4
         //[TestMethod]
         //public void StatisticsGroupByOrderStatus()
         //{
-            //create an instance of the class we want to create
-            //clsOrder AnOrder = new clsOrder();
+        //create an instance of the class we want to create
+        //clsOrder AnOrder = new clsOrder();
 
-            //invote the method
-            //DataTable dT = AnOrder.StatisticsGroupByOrderStatus();
+        //invote the method
+        //DataTable dT = AnOrder.StatisticsGroupByOrderStatus();
 
-            //According to the last executed stroed produre, there should be three rows of data.
-            //int noOfRecord = 3;
+        //According to the last executed stroed produre, there should be three rows of data.
+        //int noOfRecord = 3;
 
-            //test to see that the result is correct 
-            //Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        //test to see that the result is correct 
+        //Assert.AreEqual(noOfRecord, dT.Rows.Count);
 
         //}
 
@@ -466,17 +465,17 @@ namespace Testing4
         //[TestMethod]
         //publicvoid StatStatisticsGroupedByOrderDate()
         //{
-            //create an instance of the class we want to create
-            //clsOrder AnOrder = new clsOrder();
+        //create an instance of the class we want to create
+        //clsOrder AnOrder = new clsOrder();
 
-            // invote the method
-            //DataTable dT = AnOrder.StatStatisticsGroupedByOrderDate();
+        // invote the method
+        //DataTable dT = AnOrder.StatStatisticsGroupedByOrderDate();
 
-            //According to the last executed stroed produre, there should be three rows of data.
-            //int noOfRecord = 10;
+        //According to the last executed stroed produre, there should be three rows of data.
+        //int noOfRecord = 10;
 
-            //test to see that the result is correct 
-            //Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        //test to see that the result is correct 
+        //Assert.AreEqual(noOfRecord, dT.Rows.Count);
         //}
     }
 }

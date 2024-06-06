@@ -14,12 +14,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        
         <div>
         </div>
     &nbsp;&nbsp;
         <asp:Label ID="lblOrderId" runat="server" Text="Order ID"></asp:Label>
 &nbsp;<asp:TextBox ID="txtOrderId" runat="server" Height="16px" OnTextChanged="TextBox1_TextChanged1" style="margin-bottom: 0px" Width="121px"></asp:TextBox>
         <br />
+        <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 258px; top: 33px; position: absolute" Text="Find" OnClick="btnFind_Click" />
         <br />
         <asp:Label ID="lblShoeId" runat="server" Text="Shoe ID"></asp:Label>
         <asp:TextBox ID="txtShoeId" runat="server" style="z-index: 1; left: 77px; top: 69px; position: absolute"></asp:TextBox>
@@ -38,7 +40,7 @@
         <asp:Label ID="lblOrderDate" runat="server" style="z-index: 1; left: 18px; top: 204px; position: absolute; height: 28px" Text="Order Date"></asp:Label>
         <asp:TextBox ID="txtOrderDate" runat="server" style="z-index: 1; left: 105px; top: 203px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblNote" runat="server" style="z-index: 1; left: 20px; top: 251px; position: absolute" Text="Note of Order"></asp:Label>
-        <asp:Label ID="lblTotalAmount" runat="server" style="z-index: 1; left: 21px; top: 291px; position: absolute" Text="Basket Total"></asp:Label>
+        <asp:Label ID="lblTotalAmount" runat="server" style="z-index: 1; left: 21px; top: 291px; position: absolute" Text="Total Amount"></asp:Label>
         <asp:Label ID="lblOrderStatus" runat="server" style="z-index: 1; left: 23px; top: 347px; position: absolute; bottom: 207px; width: 85px;" Text="Order Status:"></asp:Label>
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 139px; top: 520px; position: absolute" Text="Cancel" />
         <p>
