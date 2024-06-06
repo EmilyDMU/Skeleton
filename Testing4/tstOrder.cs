@@ -26,7 +26,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
 
             //create some test data to assign to the property
-            Boolean TestData = true;
+            string TestData = "Something";
 
             //assign the data to the property
             AnOrder.OrderStatus = TestData;
@@ -262,28 +262,28 @@ namespace Testing4
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
 
-     //create a boolean variable to store the result of the search
-        Boolean Found = false;
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
 
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
 
             //create some test data to use with the method
             Int32 OrderId = 1;
-            
+
             //invoke the method
             Found = AnOrder.Find(OrderId);
-        
+
             //check the note property
-            if(AnOrder.Note != "ITEM:COLOUR/SIZE")
-            { 
+            if (AnOrder.Note != "ITEM:COLOUR/SIZE")
+            {
                 OK = false;
             }
             //test to see the result is correct
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestCustomerIdFound() 
+        public void TestCustomerIdFound()
         {
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
@@ -362,7 +362,122 @@ namespace Testing4
 
 
 
-       
+        [TestMethod]
+        public void TestOrderStatusFound()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderId = 1;
+
+            //invoke the method
+            Found = AnOrder.Find(OrderId);
+
+            //check the order status property
+            if (AnOrder.OrderStatus != "Pending")
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderId = 1;
+
+            //invoke the method
+            Found = AnOrder.Find(OrderId);
+
+            //check the Active property
+            if (AnOrder.Active != true)
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestTotalAmountFound()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+
+            //create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 OrderId = 1;
+
+            //invoke the method
+            Found = AnOrder.Find(OrderId);
+
+            //check the total Amount property
+            if (AnOrder.TotalAmount != 45.50)
+            {
+                OK = false;
+            }
+            //test to see the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        //[TestMethod]
+        //public void StatisticsGroupByOrderStatus()
+        //{
+            //create an instance of the class we want to create
+            //clsOrder AnOrder = new clsOrder();
+
+            //invote the method
+            //DataTable dT = AnOrder.StatisticsGroupByOrderStatus();
+
+            //According to the last executed stroed produre, there should be three rows of data.
+            //int noOfRecord = 3;
+
+            //test to see that the result is correct 
+            //Assert.AreEqual(noOfRecord, dT.Rows.Count);
+
+        //}
+
+
+        //[TestMethod]
+        //publicvoid StatStatisticsGroupedByOrderDate()
+        //{
+            //create an instance of the class we want to create
+            //clsOrder AnOrder = new clsOrder();
+
+            // invote the method
+            //DataTable dT = AnOrder.StatStatisticsGroupedByOrderDate();
+
+            //According to the last executed stroed produre, there should be three rows of data.
+            //int noOfRecord = 10;
+
+            //test to see that the result is correct 
+            //Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        //}
     }
 }
 

@@ -18,5 +18,6 @@ public partial class _1Viewer : System.Web.UI.Page
         
 //display the note for this entry
         Response.Write(AnOrder.Note);
+        Response.Write("£" + AnOrder.TotalAmount);
     }
 }

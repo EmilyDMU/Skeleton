@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 
 namespace ClassLibrary
@@ -86,7 +88,7 @@ public int CustomerId
 
 
 
-        //private data member for the customer id Property
+        //private data member for the Shoe id Property
         private Int32 mShoeId;
 
         public int ShoeId
@@ -105,7 +107,7 @@ public int CustomerId
 
 
 
-        //private data member for the customer id Property
+        //private data member for the Staff id Property
         private Int32 mStaffId;
 
         public int StaffId
@@ -123,29 +125,110 @@ public int CustomerId
         }
 
 
-        public bool OrderStatus { get; set; }
-        public float TotalAmount { get; set; }
-        
-        
-        
 
-        
+        //private data memeber for the OrderStatus of property  
+        private string mOrderStatus;
+        public string OrderStatus
+        {
+            get
+            {
+                //this line of code allows data out of property 
+                return mOrderStatus;
+            }
+            set 
+            {
+                mOrderStatus = value;
+            } 
+        }
 
-        
-        
-        public bool Active { get; set; }
+
+        private float mTotalAmount;
+
+        public float TotalAmount 
+        {
+            get 
+            { 
+                return mTotalAmount;
+            }
+            set 
+            {
+                mTotalAmount = value; 
+            } 
+        }
+
+
+
+        //private data member for the active of property
+        private bool mActive;
+        public bool Active 
+        {
+            get 
+            { 
+            //this line of code allows data out of property
+                return mActive;
+            }
+            set 
+            {
+                mActive = value; 
+            } 
+        }
 
         public bool Find(int orderId)
         {
-            //set the private data members to the test data value
-            mOrderId = 1;
-            mOrderDate = Convert.ToDateTime("23/12/2022");
-            mNote = "ITEM:COLOUR/SIZE";
-            CustomerId = 11;
-            ShoeId = 12;
-            StaffId = 13;
-            //alaways return true
-            return true;
+            //onject for the data connect
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.AddParameter("@OrderId", OrderId);
+            
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByOrderId");
+
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+
+            {
+                //set the private data members to the test data value
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mNote = Convert.ToString(DB.DataTable.Rows[0]["Note"]);
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mShoeId = Convert.ToInt32(DB.DataTable.Rows[0]["ShoeId"]);
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mTotalAmount = (float)Convert.ToDouble(DB.DataTable.Rows[0]["TotalAmount"]);
+                //alaways return true
+                return true;
+            }
+            //if no record was found
+            else { 
+            //return false indicating there is a problem 
+            return false;
+            }
         }
+        //public DataTable StatisticsGroupByOrderStatus()
+                //{
+            //create an instance of the data connection 
+            //clsDataConnection DB = new clsDataConnection();
+        
+            //excute the stored proceduce 
+            //DB.Execute("sproc_tblOrder_Count_GroupByOrderStatus);
+
+                //there should be either zero, one, or more records
+                //return DB.DataTable;
+        //}
+
+        //public DataTable StatisticsGroupedOrderDate()
+        //{
+            //create an instance of the data connection 
+            //clsDataConnection DB = new clsDataConnection();
+
+            //excute the stored proceduce 
+            //DB.Execute("sproc_tblOrder_Count_GroupOrderDate);
+
+                //there should be either zero, one, or more records
+                //return DB.DataTable;
+        //}
     }
 }
