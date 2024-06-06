@@ -14,7 +14,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
-    { //create a new instance of clsStaff
+    { 
+        //accidentally worked in master branch. no issues though
+        //create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
         //capture staff ID
         string StaffId = txtStaffId.Text;
