@@ -149,5 +149,90 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string staffName, string dateOfBirth, string staffRole, string staffDepartment, string staffStatus)
+        {
+            //create a string variable to store the error 
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
+            //if staff name is blank
+            if (staffName.Length == 0)
+            {
+                //record the error
+                Error += "The staff name may not be blank : ";
+            }
+            // if staff name is greater than 50 characters
+            if (staffName.Length > 50)
+            {
+                Error += "The staff name must be less than 50 characters : ";
+            }
+
+            try
+            {
+                //copy dateOfBirth value to the DateTemp variable 
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record error
+                    Error += "The date cannot be in the past : ";
+                }
+                //check to see if date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record error
+                    Error += "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record error
+                Error += "The date was not a valid date : ";
+            }
+
+            // Validation for staffRole
+            // if staff role is blank
+            if (staffRole.Length == 0)
+            {
+                //record the error
+                Error += "The staff role may not be blank : ";
+            }
+            // if staff role is greater than 50 characters
+            if (staffRole.Length > 50)
+            {
+                Error += "The staff role must be less than 50 characters : ";
+            }
+
+            // Validation for staffDepartment
+            // if staff department is blank
+            if (staffDepartment.Length == 0)
+            {
+                //record the error
+                Error += "The staff department may not be blank : ";
+            }
+            // if staff department is greater than 50 characters
+            if (staffDepartment.Length > 50)
+            {
+                Error += "The staff department must be less than 50 characters : ";
+            }
+
+            // Validation for staffStatus
+            // if staff status is blank
+            if (staffStatus.Length == 0)
+            {
+                //record the error
+                Error += "The staff status may not be blank : ";
+            }
+            // if staff status is greater than 50 characters
+            if (staffStatus.Length > 50)
+            {
+                Error += "The staff status must be less than 50 characters : ";
+            }
+
+            //return error
+            return Error;
+        }
+
     }
 }
