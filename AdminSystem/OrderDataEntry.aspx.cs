@@ -42,9 +42,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsOrder    
         clsOrder AnOrder = new clsOrder();
+        
+        //capture the Order ID
+        //AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
+        
+        //capture the Shoe ID
+        //AnOrder.ShoeId = Convert.ToInt32(txtShoeId.Text);
+
+        //capture the Customer ID
+        //AnOrder.CustomerId = Convert.ToInt32(txtCustomerId.Text);
+
+        //capture the Staff ID
+        //AnOrder.StaffId = Convert.ToInt32(txtStaffId.Text);
+
+        //capture the order Date
+        //AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
 
         //capture the note	
         AnOrder.Note = txtNote.Text;
+
+        //capture the total amount
+        AnOrder.TotalAmount = float.Parse(txtTotalAmount.Text);
+
+        //capture the order status
+        //AnOrder.OrderStatus = txtOrderStatus.Text;
+
+        //Capture the active
+        //AnOrder.Active = chkActive.Checked;
 
         //store the order in the session object 	
         Session["AnOrder"] = AnOrder;
