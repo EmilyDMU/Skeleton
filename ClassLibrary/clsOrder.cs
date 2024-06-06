@@ -7,11 +7,12 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-        //private data member for the order id property 
+        
+//private data member for the order id property
         private Int32 mOrderId;
 
- //OrderId public property
-public Int32 OrderId
+        //OrderId public property
+        public Int32 OrderId
         {
             get
             {
@@ -29,7 +30,7 @@ public Int32 OrderId
 
         //private data member for the order date property
         private DateTime mOrderDate;
-        
+
         //OrderDate public property
         public DateTime OrderDate
         {
@@ -46,10 +47,9 @@ public Int32 OrderId
         }
 
 
-
         //private data member for the Note Property 
         private string mNote;
-        
+
         //Note public property 
         public string Note
         {
@@ -66,12 +66,10 @@ public Int32 OrderId
         }
 
 
-
-
         //private data member for the customer id Property
         private Int32 mCustomerId;
 
-public int CustomerId
+        public int CustomerId
         {
             get
             {
@@ -84,8 +82,6 @@ public int CustomerId
                 mCustomerId = value;
             }
         }
-
-
 
 
         //private data member for the Shoe id Property
@@ -105,8 +101,6 @@ public int CustomerId
             }
         }
 
-
-
         //private data member for the Staff id Property
         private Int32 mStaffId;
 
@@ -125,9 +119,9 @@ public int CustomerId
         }
 
 
-
         //private data memeber for the OrderStatus of property  
         private string mOrderStatus;
+
         public string OrderStatus
         {
             get
@@ -135,52 +129,50 @@ public int CustomerId
                 //this line of code allows data out of property 
                 return mOrderStatus;
             }
-            set 
+            set
             {
                 mOrderStatus = value;
-            } 
+            }
         }
 
 
         private float mTotalAmount;
 
-        public float TotalAmount 
+        public float TotalAmount
         {
-            get 
-            { 
+            get
+            {
                 return mTotalAmount;
             }
-            set 
+            set
             {
-                mTotalAmount = value; 
-            } 
+                mTotalAmount = value;
+            }
         }
-
-
 
         //private data member for the active of property
         private bool mActive;
-        public bool Active 
+        public bool Active
         {
-            get 
-            { 
-            //this line of code allows data out of property
+            get
+            {
+                //this line of code allows data out of property
                 return mActive;
             }
-            set 
+            set
             {
-                mActive = value; 
-            } 
+                mActive = value;
+            }
         }
 
-        public bool Find(int orderId)
+        public bool Find(int OrderId)
         {
             //onject for the data connect
             clsDataConnection DB = new clsDataConnection();
 
             //execute the stored procedure
             DB.AddParameter("@OrderId", OrderId);
-            
+
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_FilterByOrderId");
 
@@ -202,11 +194,14 @@ public int CustomerId
                 return true;
             }
             //if no record was found
-            else { 
-            //return false indicating there is a problem 
-            return false;
+            else
+            {
+                //return false indicating there is a problem 
+                return false;
             }
-        }
+        
+    }
+    }
         //public DataTable StatisticsGroupByOrderStatus()
                 //{
             //create an instance of the data connection 
@@ -231,4 +226,3 @@ public int CustomerId
                 //return DB.DataTable;
         //}
     }
-}
