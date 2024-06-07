@@ -15,11 +15,8 @@
         </p>
         <p>
             &nbsp;</p>
-        <asp:Button ID="Button1" runat="server" style="z-index: 1; left: 54px; top: 282px; position: absolute; height: 67px; width: 211px" Text="Order Processing" />
-        <asp:Button ID="Button2" runat="server" style="z-index: 1; left: 353px; top: 305px; position: absolute" Text="Button" />
-        <asp:Button ID="Button3" runat="server" style="z-index: 1; left: 487px; top: 305px; position: absolute" Text="Button" />
-        <asp:Button ID="Button4" runat="server" style="z-index: 1; left: 628px; top: 306px; position: absolute" Text="Button" />
-        <asp:Button ID="Button5" runat="server" style="z-index: 1; left: 792px; top: 306px; position: absolute" Text="Button" />
+        <asp:Button ID="btnOrder" runat="server" style="z-index: 1; left: 54px; top: 282px; position: absolute; height: 67px; width: 211px" Text="Order Processing" OnClick="btnOrder_Click" />
+        <asp:Button ID="btnStaff" runat="server" style="z-index: 1; left: 353px; top: 305px; position: absolute" Text="Staff" OnClick="btnStaff_Click" />
     </form>
 </body>
 </html>
