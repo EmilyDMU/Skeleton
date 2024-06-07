@@ -9,36 +9,12 @@ namespace ClassLibrary
         //constructor for the class
         public clsStaffCollection() 
         {
-            //variable for the index
-            Int32 Index = 0;
-            // var to store record count
-            Int32 RecordCount = 0;
-            // object for db connect
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
-            // execute stored procedure
+            //execute sproc
             DB.Execute("sproc_tblStaff_SelectAll");
-            //get count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                // create blank staff
-                clsStaff AStaff = new clsStaff();
-                //read in the fields for th current record
-                AStaff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
-                AStaff.StaffName = Convert.ToString(DB.DataTable.Rows[Index]["StaffName"]);
-                AStaff.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
-                AStaff.StaffRole = Convert.ToString(DB.DataTable.Rows[Index]["StaffRole"]);
-                AStaff.StaffDepartment = Convert.ToString(DB.DataTable.Rows[Index]["StaffDepartment"]);
-                AStaff.StaffStatus = Convert.ToString(DB.DataTable.Rows[Index]["StaffStatus"]);
-                AStaff.StaffPermission = Convert.ToBoolean(DB.DataTable.Rows[Index]["StaffPermission"]);
-                //add record to private data member 
-                mStaffList.Add(AStaff);
-                //point at next record
-                Index++;
-            }
-           
-
+            //populate the array list with data table
+            PopulateArray(DB);
         }
 
         //private data member for the list
@@ -137,6 +113,50 @@ namespace ClassLibrary
             DB.AddParameter("@StaffId", mThisStaff.StaffId);
             //execute
             DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportByDepartment(string StaffDepartment)
+        {
+            //filters code based on full or partial department
+            //connect to db
+            clsDataConnection DB = new clsDataConnection();
+            //send the dep param to db
+            DB.AddParameter("@StaffDepartment", StaffDepartment);
+            //execute the sproc
+            DB.Execute("sproc_tblStaff_FilterByDepartment");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates array list based on data table in param DB
+            //var for index
+            Int32 Index = 0;
+            // var to store record count
+            Int32 RecordCount = 0;
+            //get count of records
+            RecordCount = DB.Count;
+            //clear priv array list
+            mStaffList = new List<clsStaff>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create blank address object
+                clsStaff AStaff = new clsStaff();
+                //read in the fields for th current record
+                AStaff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                AStaff.StaffName = Convert.ToString(DB.DataTable.Rows[Index]["StaffName"]);
+                AStaff.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
+                AStaff.StaffRole = Convert.ToString(DB.DataTable.Rows[Index]["StaffRole"]);
+                AStaff.StaffDepartment = Convert.ToString(DB.DataTable.Rows[Index]["StaffDepartment"]);
+                AStaff.StaffStatus = Convert.ToString(DB.DataTable.Rows[Index]["StaffStatus"]);
+                AStaff.StaffPermission = Convert.ToBoolean(DB.DataTable.Rows[Index]["StaffPermission"]);
+                //add record to private data member 
+                mStaffList.Add(AStaff);
+                //point at next record
+                Index++;
+            }
         }
     }
 }

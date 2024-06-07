@@ -13,8 +13,12 @@
         </div>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 24px; top: 597px; position: absolute" Text="Add" />
         <asp:Button ID="lblEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 144px; top: 597px; position: absolute" Text="Edit" />
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 38px; top: 693px; position: absolute"></asp:Label>
-            <asp:ListBox ID="lstStaffList" runat="server" style="z-index: 1; left: 14px; top: 21px; position: absolute; height: 524px; width: 553px"></asp:ListBox>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 32px; top: 975px; position: absolute"></asp:Label>
+            <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 272px; top: 805px; position: absolute" Text="Clear Filter" />
+            <asp:ListBox ID="lstStaffList" runat="server" style="z-index: 1; left: 24px; top: 19px; position: absolute; height: 524px; width: 553px"></asp:ListBox>
+        <asp:Label ID="lblReportDep" runat="server" style="z-index: 1; left: 20px; top: 711px; position: absolute" Text="Enter a Department"></asp:Label>
+        <asp:TextBox ID="txtReportDep" runat="server" style="z-index: 1; left: 324px; top: 707px; position: absolute"></asp:TextBox>
+        <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 40px; top: 807px; position: absolute" Text="Apply Filter" />
     </form>
 </body>
 </html>
