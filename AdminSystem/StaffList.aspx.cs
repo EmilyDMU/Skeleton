@@ -14,17 +14,16 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        //if firdt time page is displayed
-        if (StaffId != -1)
+        //if this is the first time page is displayed
+        if (IsPostBack == false)
         {
-            //display current data
-            DisplayMultipleStaff();
+            //update list box
+            DisplayStaff();
         }
 
     }
 
-    void DisplayMultipleStaff()
+    void DisplayStaff()
     {
         //create instance of staff collection
         clsStaffCollection Staff = new clsStaffCollection();
@@ -46,7 +45,7 @@ public partial class _1_List : System.Web.UI.Page
         Response.Redirect("StaffDataEntry.aspx");
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnEdit_Click(object sender, EventArgs e)
     {
         //var to store primary key value of record to be editted
         Int32 StaffId;
@@ -64,5 +63,27 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select record from the list to edit";
         }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //var to store pk for record to be deleted
+        Int32 StaffId;
+        //if a record has been selected from the list 
+        if (lstStaffList.SelectedIndex != -1)
+        {
+            //get pk value of the record delete
+            StaffId = Convert.ToInt32(lstStaffList.SelectedIndex);
+            //store data in a session object
+            Session["StaffId"] = StaffId;
+            //redirect to delete page
+            Response.Redirect("StaffConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "please select a record from the list to delete";
+        }
+            
+
     }
 }
