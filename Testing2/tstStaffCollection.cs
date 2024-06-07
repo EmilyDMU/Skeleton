@@ -4,6 +4,7 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Security.Cryptography;
 
 namespace Testing2
@@ -21,7 +22,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void StaffListOK() 
+        public void StaffListOK()
         {
             //create instance of class we want to create
             clsStaffCollection AllStaff = new clsStaffCollection();
@@ -37,7 +38,7 @@ namespace Testing2
             TestItem.StaffRole = "Store Manager";
             TestItem.StaffDepartment = "Retail Operations";
             TestItem.StaffStatus = "active";
-            TestItem.StaffPermission = true; 
+            TestItem.StaffPermission = true;
             //add items to test list
             TestList.Add(TestItem);
             //assign data to property
@@ -80,7 +81,7 @@ namespace Testing2
             Assert.AreEqual(AllStaff.ThisStaff, TestStaff);
         }
 
-        [TestMethod]   
+        [TestMethod]
         public void ListAndCountOk()
         {
             //create instance of class we want to create
@@ -217,6 +218,65 @@ namespace Testing2
             Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
             //test to see if record found
             Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByDepartmentMethodOk()
+        {
+            //new instance of class with unfiltered results
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //instance of filtered data
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //apply blank string to return all records
+            FilteredStaff.ReportByDepartment("");
+            //test to see if the two vales aare same 
+            Assert.AreEqual(AllStaff.Count, FilteredStaff.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByDepartmentNoneFound() 
+        {
+            //new instance of class with unfiltered results
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //apply dep that doesnt exist
+            FilteredStaff.ReportByDepartment("Legal");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStaff.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByDepartmentTestDataFound()
+        {
+            //new instance of class with unfiltered results
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply dep that doesnt exist
+            FilteredStaff.ReportByDepartment("Legal");
+            //check if correct no. of records are found
+            if (FilteredStaff.Count == 2) 
+            {
+                //check to see if 1st record is 28
+                if (FilteredStaff.StaffList[0].StaffId != 28) 
+                {
+                    OK = false;
+                }
+
+                //check to see if 2nd rec is 29
+                if (FilteredStaff.StaffList[1].StaffId != 29)
+                {
+                    OK = false;
+                }
+
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see there are no records
+            Assert.IsTrue(OK);
         }
     }
 }

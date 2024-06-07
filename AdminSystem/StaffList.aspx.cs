@@ -86,4 +86,38 @@ public partial class _1_List : System.Web.UI.Page
             
 
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //new instance of staff object
+        clsStaffCollection AStaff = new clsStaffCollection();
+        //retrieve value of dep from presentation layer
+        AStaff.ReportByDepartment(txtReportDep.Text);
+        //set data src to list of staff in collection
+        lstStaffList.DataSource = AStaff.StaffList;
+        //set name of pk
+        lstStaffList.DataValueField = "StaffId";
+        //set name of field to display
+        lstStaffList.DataTextField = "StaffDepartment";
+        //bind the data to the list
+        lstStaffList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //new instance of staff object
+        clsStaffCollection AStaff = new clsStaffCollection();
+        //set empty string
+        AStaff.ReportByDepartment("");
+        //clear any existing filter to tidy interface
+        txtReportDep.Text = "";
+        //set data src
+        lstStaffList.DataSource = AStaff.StaffList;
+        //set name of pk
+        lstStaffList.DataValueField = "StaffId";
+        //set name of field to display
+        lstStaffList.DataTextField = "StaffDepartment";
+        //bind the data to the list
+        lstStaffList.DataBind();
+    }
 }
