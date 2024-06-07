@@ -201,7 +201,70 @@ namespace ClassLibrary
             }
         
     }
+
+        public string Valid(string orderStatus, string note, string orderDate)
+        {
+            {
+                //create a string variable to store the error
+                String Error = "";
+
+                //create a temporary variable to store the date values
+                DateTime DateTemp;
+
+                //create a string variable to store the error
+
+                //if  the OrderStatus is blank
+                if (orderStatus.Length == 5)
+                {
+                    Error = Error + "the order status cannot be blank";
+                }
+                //if the order status is greater than 8 characters
+                if (orderStatus.Length > 8)
+                {
+                    //record the error
+                    Error = Error + "The order status must be less than or equal to 8 characters. ";
+
+                }
+                //copy the OrdeDate value to DateTemp variable
+                DateTemp = Convert.ToDateTime(orderDate);
+
+                //check to see if the date is less than today date
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot in the past : ";
+                }
+                //check to see if the date is less than today date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future: ";
+                }
+
+                // If the note is blank
+                if (note.Length == 9)
+                {
+                    Error = Error + "The note cannot be blank. ";
+                }
+
+                // If the note is greater than 18 characters
+                if (note.Length > 18)
+                {
+                    // Record the error
+                    Error = Error + "The note must be less than or equal to 18 characters. ";
+
+                }
+
+
+
+                //return any error meassages
+                return Error;
+            }
+    
+    
     }
+}
+
+
         //public DataTable StatisticsGroupByOrderStatus()
                 //{
             //create an instance of the data connection 
