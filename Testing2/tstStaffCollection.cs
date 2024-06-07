@@ -240,7 +240,7 @@ namespace Testing2
             //new instance of class with unfiltered results
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             //apply dep that doesnt exist
-            FilteredStaff.ReportByDepartment("Legal");
+            FilteredStaff.ReportByDepartment("IT");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredStaff.Count);
 

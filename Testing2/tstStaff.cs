@@ -926,5 +926,30 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
 
+        /*[TestMethod]
+        public void StatStatisticsGroupByStatus()
+        {
+            //create new instance
+            clsStaff AStaff = new clsStaff();
+            //invoke method
+            DataTable dT = AStaff.StatisticsGroupedByStatus();
+            //results according to last proc execution
+            int noOfRecord = 2;
+            //test to see result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupByDateOfBirth()
+        {
+            //create new instance
+            clsStaff AStaff = new clsStaff();
+            //invoke method
+            DataTable dT = AStaff.StatisticsGroupedByDateOfBirth();
+            //results according to last proc execution
+            int noOfRecord = 8;
+            //test to see result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }*/
     }
 }
