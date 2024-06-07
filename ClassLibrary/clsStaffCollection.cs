@@ -109,5 +109,23 @@ namespace ClassLibrary
 
 
         }
+
+        public void Update()
+        {
+            //updates record to the db based on a values of mThisStaff
+            //connect to db
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            DB.AddParameter("@StaffName", mThisStaff.StaffName);
+            DB.AddParameter("@DateOfBirth", mThisStaff.DateOfBirth);
+            DB.AddParameter("@StaffRole", mThisStaff.StaffRole);
+            DB.AddParameter("@StaffDepartment", mThisStaff.StaffDepartment);
+            DB.AddParameter("@StaffStatus", mThisStaff.StaffStatus);
+            DB.AddParameter("@StaffPermission", mThisStaff.StaffPermission);
+
+            //execute proc
+            DB.Execute("sproc_tblStaff_Update");
+        }
     }
 }

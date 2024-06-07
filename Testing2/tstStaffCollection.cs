@@ -145,5 +145,44 @@ namespace Testing2
 
         }
 
+        [TestMethod]
+        public void UpdateMethodOk()
+        {
+            //create instance of class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            // create item of test data 
+            clsStaff TestItem = new clsStaff();
+            // var to store primary key 
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.StaffName = "Ron Weasly";
+            TestItem.DateOfBirth = DateTime.Now;
+            TestItem.StaffRole = "Store Manager";
+            TestItem.StaffDepartment = "Retail Operations";
+            TestItem.StaffStatus = "active";
+            TestItem.StaffPermission = true;
+            //set ThisStaff to test data
+            AllStaff.ThisStaff = TestItem;
+            //add record
+            PrimaryKey = AllStaff.Add();
+            //set primary key of test data
+            TestItem.StaffId = PrimaryKey;
+            //modify test record
+            TestItem.StaffName = "Roger Wesley";
+            TestItem.DateOfBirth = DateTime.Now;
+            TestItem.StaffRole = "Store Manager";
+            TestItem.StaffDepartment = "Retail Operations";
+            TestItem.StaffStatus = "holiday";
+            TestItem.StaffPermission = true;
+            //set the record based on the new data
+            AllStaff.ThisStaff = TestItem;
+            //update the record
+            AllStaff.Update();
+            //find the record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see if ThisStaff matches test data
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+        }
     }
 }

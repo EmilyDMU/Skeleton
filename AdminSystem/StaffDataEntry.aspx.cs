@@ -8,9 +8,21 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //var to store pk on page level scope
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the numbr of the staff to be processed
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (StaffId != -1)
+            {
+                //display current data for record
+                DisplayStaff();
+            }
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -18,8 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //accidentally worked in master branch. no issues though
         //create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
-        //capture staff ID
-        string StaffId = txtStaffId.Text;
+        
         //capture the staff name
         string StaffName = txtStaffName.Text;
         //capture date of birth 
@@ -35,11 +46,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store any error messages
         string Error = "";
         //validate the date
-        Error = AStaff.Valid(StaffId, StaffName, DateOfBirth, StaffDepartment, StaffStatus);
+        Error = AStaff.Valid(StaffName, DateOfBirth, StaffRole, StaffDepartment, StaffStatus);
         if (Error == "")
         {
             //capture staff id 
-            AStaff.StaffId = Convert.ToInt32(StaffId);
+            AStaff.StaffId = StaffId;
             //capture staff name
             AStaff.StaffName = StaffName;
             //capture  date of birth 
@@ -54,10 +65,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.StaffPermission = chkStaffPermission.Checked;
             //create new instance of staff collection
             clsStaffCollection StaffList = new clsStaffCollection();
+
+
+            //if this is a new record
+            if (StaffId == -1)
+            {
             //set the ThisStaff property
             StaffList.ThisStaff = AStaff;
             //add the new record
             StaffList.Add();
+            }
+            else  //otherwise it must update
+            {
+                //find record to update
+                StaffList.ThisStaff.Find(StaffId);
+                //Set the This staff property
+                StaffList.ThisStaff = AStaff;
+                //update record
+                StaffList.Update();
+            }
             //redirect to list page
             Response.Redirect("StaffList.aspx");
         }
@@ -94,4 +120,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
 
     }
+
+     void DisplayStaff()
+     {
+         //create instance of staff book
+         clsStaffCollection StaffBook = new clsStaffCollection();
+        //find record tp update
+        StaffBook.ThisStaff.Find(StaffId);
+        //display data for record
+        txtStaffId.Text = StaffBook.ThisStaff.StaffId.ToString();
+        txtStaffName.Text = StaffBook.ThisStaff.StaffName.ToString();
+        txtDateOfBirth.Text = StaffBook.ThisStaff.DateOfBirth.ToString();
+        txtStaffRole.Text = StaffBook.ThisStaff.StaffRole.ToString();
+        txtStaffDepartment.Text = StaffBook.ThisStaff.StaffDepartment.ToString();
+        txtStaffStatus.Text = StaffBook.ThisStaff.StaffStatus.ToString();
+        chkStaffPermission.Checked = StaffBook.ThisStaff.StaffPermission;
+     }
+
 }
