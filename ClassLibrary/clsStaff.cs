@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace ClassLibrary
 {
@@ -234,5 +235,30 @@ namespace ClassLibrary
             return Error;
         }
 
+
+
+        /*** STATS grouped by status method ***/
+        public DataTable StatisticsGroupedByStatus()
+        {
+            //create new instance of db
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute sproc
+            DB.Execute("sproc_tblStaff_Count_GroupByStatus");
+            //should be zero or more records
+            return DB.DataTable;
+        }
+
+        /*** STATS grouped by date of birth method ***/
+        public DataTable StatisticsGroupedByDateOfBirth()
+        {
+            //create new instance of db
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute sproc
+            DB.Execute("sproc_tblStaff_Count_GroupByDateOfBirth");
+            //should be zero or more records
+            return DB.DataTable;
+        }
     }
 }
