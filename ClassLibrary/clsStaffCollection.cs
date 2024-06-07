@@ -43,13 +43,15 @@ namespace ClassLibrary
 
         //private data member for the list
         List<clsStaff> mStaffList = new List<clsStaff>();
+        //private data member for thisStaff
+        clsStaff mThisStaff = new clsStaff();
 
         //public property for staff list
         public List<clsStaff> StaffList
         {
             get
             {
-                //set private data
+                //return private data
                 return mStaffList;
             }
             set
@@ -73,6 +75,39 @@ namespace ClassLibrary
             }
         }
 
-        public clsStaff ThisStaff { get; set; }
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                //return private data
+                return mThisStaff;
+            }
+            set
+            {
+                
+                //set private data
+                mThisStaff = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds record to the db based on a values of mThisStaff
+            //connect to db
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters
+         
+            DB.AddParameter("@StaffName", mThisStaff.StaffName);
+            DB.AddParameter("@DateOfBirth", mThisStaff.DateOfBirth);
+            DB.AddParameter("@StaffRole", mThisStaff.StaffRole);
+            DB.AddParameter("@StaffDepartment", mThisStaff.StaffDepartment);
+            DB.AddParameter("@StaffStatus", mThisStaff.StaffStatus);
+            DB.AddParameter("@StaffPermission", mThisStaff.StaffPermission);
+
+            //execute query
+            return DB.Execute("sproc_tblStaff_Insert");
+
+
+        }
     }
 }

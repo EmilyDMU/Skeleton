@@ -50,10 +50,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.StaffDepartment = StaffDepartment;
             //capture staff status
             AStaff.StaffStatus = StaffStatus;
-            //store address in session object
-            Session["AStaff"] = AStaff;
-            //navigate to view page
-            Response.Redirect("StaffViewer.aspx");
+            //capture staff permission
+            AStaff.StaffPermission = chkStaffPermission.Checked;
+            //create new instance of staff collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set the ThisStaff property
+            StaffList.ThisStaff = AStaff;
+            //add the new record
+            StaffList.Add();
+            //redirect to list page
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
